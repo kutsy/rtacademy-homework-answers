@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.12</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div style="background:#f1f1f1; color:#111; padding:.5rem; font:.9rem Verdana,sans-serif;">
+    Відкрийте консоль<br>
+    <code>Ctrl+Shift+J</code><br>
+    або <code>⌘+⌥+J</code> для Mac
+</div>
+
+<script>
+
+const parseCSV = ( fileContents ) =>
+    fileContents
+        .split( '\n' )
+        .filter( line => !!line )
+        .map( line => line.split( ',' ) )
+        .map( item =>
+            {
+                return {
+                    'city'      : item[0].toString(),
+                    'latitude'  : parseFloat( item[1] ),
+                    'longitude' : parseFloat( item[2] ),
+                    'country'   : item[3].toString(),
+                    'population': parseInt( item[4] ),
+                }
+            }
+        );
+
+let csvFileContent = `
+Kyiv,50.4334,30.5166,Ukraine,2709000
+Kharkiv,50.0000,36.2500,Ukraine,1461000
+Dnipro,48.4800,35.0000,Ukraine,1050000
+Odesa,46.4900,30.7100,Ukraine,991000
+Donets’k,48.0000,37.8300,Ukraine,988000
+L’viv,49.8350,24.0300,Ukraine,803880
+Zaporizhzhya,47.8573,35.1768,Ukraine,788000
+Kryvyy Rih,47.9283,33.3450,Ukraine,652380
+Mykolayiv,46.9677,31.9843,Ukraine,510840
+`;
+
+console.log( parseCSV( csvFileContent ) );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div style="background:#f1f1f1; color:#111; padding:.5rem; font:.9rem Verdana,sans-serif;">
+    Відкрийте консоль<br>
+    <code>Ctrl+Shift+J</code><br>
+    або <code>⌘+⌥+J</code> для Mac
+</div>
+
+<script>
+
+let num = 10;
+// ще варіанти: -1, 0, 1
+
+let resultSign = '+';
+
+switch( true )
+{
+    case ( num < 0 ):
+        resultSign = '-';
+        break;
+    case ( num == 0 ):
+        resultSign = '0';
+        break;
+}
+
+console.log( num, resultSign );
+
+</script>
+
+</body>
+</html>

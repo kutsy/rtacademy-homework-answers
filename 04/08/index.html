@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div style="background:#f1f1f1; color:#111; padding:.5rem; font:.9rem Verdana,sans-serif;">
+    Відкрийте консоль<br>
+    <code>Ctrl+Shift+J</code><br>
+    або <code>⌘+⌥+J</code> для Mac
+</div>
+
+<script>
+
+function capitalize( cityName )
+{
+    return cityName.substring( 0, 1 ).toUpperCase() + cityName.substring( 1 ).toLowerCase();
+}
+
+let cityNameCapitalized = capitalize('стОКГольМ');
+console.log( cityNameCapitalized );
+
+</script>
+
+</body>
+</html>

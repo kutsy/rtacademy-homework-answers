@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.17</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        font: normal 1rem/1.5rem Verdana,sans-serif;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        width: 16rem;
+        margin: 50vh auto 0 auto;
+    }
+
+    #country {
+        width: 100%;
+        display: block;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        border: 0.1rem solid #ccc;
+        border-radius: 0.3rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    </style>
+</head>
+<body>
+
+<main>
+    <!-- тут з'явиться магічним чином <input> та <datalist> -->
+</main>
+
+<script>
+    (async function() {
+        // GET-запит для countries.json, що буде завантажуватись з поточного домена
+        let response = await fetch( './countries.json' );
+
+        if( response.ok )           // HTTP = 200, все ОК
+        {
+            const countriesList = await response.json();   // читаємо відповідь в форматі JSON
+
+            // створюємо елемент <input>
+            const input = document.createElement( 'input' );
+            input.setAttribute( 'type', 'text' );
+            input.setAttribute( 'id', 'country' );
+            input.setAttribute( 'list', 'countries' );
+
+            // створюємо елемент <datalist>
+            const datalist = document.createElement( 'datalist' );
+            datalist.setAttribute( 'id', 'countries' );
+
+            // заповнюємо значеннями елемент <datalist>
+            countriesList.forEach(
+                ( country ) =>
+                {
+                    const option = document.createElement( 'option' );
+                    option.append( document.createTextNode( country.Name ) );
+
+                    datalist.append( option );
+                }
+            );
+
+            // відображаємо <input> та <datalist> у елементі <main>
+            document.getElementsByTagName('main')[0].append( input, datalist );
+        }
+        else
+        {                       // HTTP не 200, обробляємо як помилку
+            console.error( 'Сталася помилка ' + response.status + ': ' + response.statusText );
+        }
+    })();
+</script>
+
+</body>
+</html>

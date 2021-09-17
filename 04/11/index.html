@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.11</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div style="background:#f1f1f1; color:#111; padding:.5rem; font:.9rem Verdana,sans-serif;">
+    Відкрийте консоль<br>
+    <code>Ctrl+Shift+J</code><br>
+    або <code>⌘+⌥+J</code> для Mac
+</div>
+
+<script>
+
+const getRandomInt = ( min, max ) =>
+{
+    // перетворюємо вхідні дані у integer
+    min = parseInt( min );
+    max = parseInt( max );
+
+    // якщо після конвертації у тип Number отримали NaN -- повертаємо помилку (наприклад 0)
+    if( Number.isNaN( min ) || Number.isNaN( max ) )
+    {
+        return 0;
+    }
+
+    // якщо min === max -- повертаємо помилку (наприклад 0)
+    if( min === max )
+    {
+        return 0;
+    }
+
+    // якщо max < min -- міняємо змінні місцями
+    if( max < min )
+    {
+        let temp = min;
+        min = max;
+        max = temp;
+    }
+
+    // обчислюємо рандом у межах від min (включно) до max (включно)
+    return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
+};
+
+let randomInt = getRandomInt( 1, 100 );
+//let randomInt = getRandomInt( 100, 1 );
+//let randomInt = getRandomInt( -100, +100 );
+//let randomInt = getRandomInt( "100", "1" );
+//let randomInt = getRandomInt( 10.123, 100.987 );
+
+console.log( 'Випадкове число: ' + randomInt );
+
+</script>
+
+</body>
+</html>

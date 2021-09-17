@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div style="background:#f1f1f1; color:#111; padding:.5rem; font:.9rem Verdana,sans-serif;">
+    Відкрийте консоль<br>
+    <code>Ctrl+Shift+J</code><br>
+    або <code>⌘+⌥+J</code> для Mac
+</div>
+
+<script>
+
+let a = 10,
+    b = 20;
+
+a = b - a;
+b = a;
+a = b + a;
+
+console.log( a, b );  // => 20, 10
+
+</script>
+
+</body>
+</html>

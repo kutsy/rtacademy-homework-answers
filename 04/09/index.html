@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>#4.9</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div style="background:#f1f1f1; color:#111; padding:.5rem; font:.9rem Verdana,sans-serif;">
+    Відкрийте консоль<br>
+    <code>Ctrl+Shift+J</code><br>
+    або <code>⌘+⌥+J</code> для Mac
+</div>
+
+<script>
+
+const citySuffixes =
+[
+    'де', 'на', 'лез', 'ла', 'сюр',
+];
+
+const capitalize = ( cityName ) =>
+{
+    return cityName
+        .toLowerCase()
+        .split( '-' )
+        .map(
+            ( chunk ) =>
+            {
+                // частинка імені знаходиться у списку виключень - повертаємо як є
+                if( citySuffixes.includes(chunk) )
+                {
+                    return chunk;
+                }
+
+                // загальна форма Capitalize (toLowerCase вже застосовано)
+                return chunk.substring( 0, 1 ).toUpperCase() + chunk.substring( 1 );
+            }
+        )
+        .join( '-' );
+}
+
+//let cityNameCapitalized = capitalize('нью-йорк');
+//console.log( cityNameCapitalized );
+
+console.log( capitalize('київ') );
+console.log( capitalize('нью-йорк') );
+console.log( capitalize('лос-анджелес') );
+console.log( capitalize('ріо-де-жанейро') );
+console.log( capitalize('франкфурт-на-майні') );
+console.log( capitalize('сен-сатюрнен-лез-апт') );
+
+</script>
+
+</body>
+</html>
