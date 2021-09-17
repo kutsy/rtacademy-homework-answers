@@ -1,0 +1,39 @@
+<?php
+
+declare( strict_types=1 );
+
+namespace lib;
+
+class Session
+{
+    public static function start() : void
+    {
+        session_set_cookie_params(
+            [
+                'lifetime'  => 3600,    // час життя кукі
+                'secure'    => true,    // атрибут Secure
+                'httponly'  => true     // атрибут HttpOnly
+            ]
+        );
+        session_start();
+    }
+
+    public static function isAuthorized() : bool
+    {
+        return boolval( $_SESSION['isAuth'] ?? 0 );
+    }
+
+    public static function authorize( \lib\entities\Author $user ): void
+    {
+        $_SESSION['isAuth']    = 1;        // прапорець авторизації
+        $_SESSION['id']        = $user->getId();
+        $_SESSION['firstName'] = $user->getFirstName();
+        $_SESSION['lastName']  = $user->getLastName();
+        $_SESSION['role']      = $user->getRoleName();
+    }
+
+    public static function deauthorize(): void
+    {
+        // TODO
+    }
+}
