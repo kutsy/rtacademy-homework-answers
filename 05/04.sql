@@ -39,7 +39,7 @@ VALUES
 
 INSERT INTO users
 (login, email, password, lastname, firstname, role_id, status_id)
-VALUES('adam.bankhurst', 'adam.bankhurst@ign.com', '00000000000000000000000000000000', 'Bankhurst','Adam', 401, 301);
+VALUES('adam.bankhurst', 'adam.bankhurst@ign.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Bankhurst','Adam', 401, 301);
 -- 1
 
 INSERT INTO posts_covers
@@ -127,7 +127,7 @@ VALUES
 
 INSERT INTO users
 (login, email, password, lastname, firstname, role_id, status_id)
-VALUES('matt.kim', 'matt.kim@ign.com', '00000000000000000000000000000000', 'Kim','Matt T.M.', 401, 301);
+VALUES('matt.kim', 'matt.kim@ign.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Kim','Matt T.M.', 401, 301);
 -- 2
 
 INSERT INTO posts_covers
@@ -157,7 +157,7 @@ VALUES
 
 INSERT INTO users
 (login, email, password, lastname, firstname, role_id, status_id)
-VALUES('joe.skrebels', 'joe.skrebels@ign.com', '00000000000000000000000000000000', 'Skrebels','Joe', 401, 301);
+VALUES('joe.skrebels', 'joe.skrebels@ign.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Skrebels','Joe', 401, 301);
 -- 3
 
 INSERT INTO posts_covers
@@ -189,7 +189,7 @@ VALUES
 
 INSERT INTO users
 (login, email, password, lastname, firstname, role_id, status_id)
-VALUES('taylor.lyles', 'taylor.lyles@ign.com', '00000000000000000000000000000000', 'Lyles','Taylor', 401, 301);
+VALUES('taylor.lyles', 'taylor.lyles@ign.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lyles','Taylor', 401, 301);
 -- 4
 
 INSERT INTO posts_covers
@@ -241,7 +241,7 @@ VALUES
 
 INSERT INTO users
 (login, email, password, lastname, firstname, role_id, status_id)
-VALUES('matt.purslow', 'matt.purslow@ign.com', '00000000000000000000000000000000', 'Purslow','Matt', 401, 301);
+VALUES('matt.purslow', 'matt.purslow@ign.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Purslow','Matt', 401, 301);
 -- 5
 
 INSERT INTO posts_covers
@@ -273,7 +273,7 @@ VALUES
 
 INSERT INTO users
 (login, email, password, lastname, firstname, role_id, status_id)
-VALUES('kat.bailey', 'kat.bailey@ign.com', '00000000000000000000000000000000', 'Bailey','Kat', 401, 301);
+VALUES('kat.bailey', 'kat.bailey@ign.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Bailey','Kat', 401, 301);
 -- 6
 
 INSERT INTO posts_covers
