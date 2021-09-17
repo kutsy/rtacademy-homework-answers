@@ -34,6 +34,21 @@ class Session
 
     public static function deauthorize(): void
     {
-        // TODO
+        // видаляємо всі змінні сесії
+        $_SESSION = [];
+
+        // видаляємо сесійну cookie
+        $params = session_get_cookie_params();
+        setcookie(
+            session_name(), '',
+            time() - 86400,
+            $params['path'],
+            $params['domain'],
+            $params['secure'],
+            $params['httponly']
+        );
+
+        // знищуємо сесію
+        session_destroy();
     }
 }
