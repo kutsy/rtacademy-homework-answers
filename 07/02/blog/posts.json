@@ -1,0 +1,110 @@
+[
+    {
+        "id": 7,
+        "title" : "Cyberpunk 2077 Seems to Be Returning to the PlayStation Store",
+        "alias" : "cyberpunk-2077-seems-to-be-returning-to-the-playstation-store",
+        "publish_date" : "2021-06-16 09:00:00",
+        "description" : "Cyberpunk appears to be returning to the PlayStation Store.",
+        "url": "./single.php?id=7",
+        "category": {
+            "id" : 11,
+            "title" : "PlayStation",
+            "alias" : "playstation"
+        },
+        "cover" : {
+            "src": "./images/07_310.jpg",
+            "srcset": "./images/07_310.jpg 310w, ./images/07_350.jpg 350w, ./images/07_550.jpg 550w, ./images/07_640.jpg 640w",
+            "sizes": "(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+        }
+    },
+    {
+        "id": 8,
+        "title" : "Battlefield 2042 Will Use AI Bots To Fill Multiplayer Matches, Allow Co-Op or Solo Play",
+        "alias" : "battlefield-2042-will-use-ai-bots-to-fill-multiplayer-matches-allow-co-op-or-solo-play",
+        "publish_date" : "2021-06-14 10:00:00",
+        "description" : "Artificial intelligence will storm the battlefields for the first time in the series' history.",
+        "url": "./single.php?id=8",
+        "category": {
+            "id" : 10,
+            "title" : "PC",
+            "alias" : "pc"
+        },
+        "cover" : {
+            "src": "./images/08_310.jpg",
+            "srcset": "./images/08_310.jpg 310w, ./images/08_350.jpg 350w, ./images/08_550.jpg 550w, ./images/08_640.jpg 640w",
+            "sizes": "(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+        }
+    },
+    {
+        "id": 9,
+        "title" : "Forza Horizon 5 is the Most Anticipated Game of the Show",
+        "alias" : "forza-horizon-5-is-the-most-anticipated-game-of-the-show",
+        "publish_date" : "2021-06-13 19:10:00",
+        "description" : "E3 Awards 2021: Halo: Infinite and Tiny Tina's Wonderlands also among the games highlighted.",
+        "url": "./single.php?id=9",
+        "category": {
+            "id" : 10,
+            "title" : "PC",
+            "alias" : "pc"
+        },
+        "cover" : {
+            "src": "./images/09_310.jpg",
+            "srcset": "./images/09_310.jpg 310w, ./images/09_350.jpg 350w, ./images/09_550.jpg 550w, ./images/09_640.jpg 640w",
+            "sizes": "(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+        }
+    },
+    {
+        "id": 10,
+        "title" : "Guardians of the Galaxy Comes to Nintendo Switch, but as a Cloud Version - E3 2021",
+        "alias" : "guardians-of-the-galaxy-comes-to-nintendo-switch-but-as-a-cloud-version-e3-2021",
+        "publish_date" : "2021-06-12 05:12:34",
+        "description" : "The new Square Enix Marvel adventure is coming to Switch.",
+        "url": "./single.php?id=10",
+        "category": {
+            "id" : 12,
+            "title" : "Nintendo",
+            "alias" : "nintendo"
+        },
+        "cover" : {
+            "src": "./images/10_310.jpg",
+            "srcset": "./images/10_310.jpg 310w, ./images/10_350.jpg 350w, ./images/10_550.jpg 550w, ./images/10_640.jpg 640w",
+            "sizes": "(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+        }
+    },
+    {
+        "id": 11,
+        "title" : "Disney Let Ubisoft Massive Make a Star Wars Game After a Meeting About Its Avatar Game",
+        "alias" : "disney-let-ubisoft-massive-make-a-star-wars-game-after-a-meeting-about-its-avatar-game",
+        "publish_date" : "2021-06-11 17:05:00",
+        "description" : "We certainly feel like the wait will be worth it.",
+        "url": "./single.php?id=11",
+        "category": {
+            "id" : 10,
+            "title" : "PC",
+            "alias" : "pc"
+        },
+        "cover" : {
+            "src": "./images/11_310.jpg",
+            "srcset": "./images/11_310.jpg 310w, ./images/11_350.jpg 350w, ./images/11_550.jpg 550w, ./images/11_640.jpg 640w",
+            "sizes": "(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+        }
+    },
+    {
+        "id": 12,
+        "title" : "Elden Ring: How FromSoft's Largest, Most Free-Form Map Works - Summer of Gaming: IGN News",
+        "alias" : "elden-ring-how-fromsofts-largest-most-free-form-map-works-summer-of-gaming-ign-news",
+        "publish_date" : "2021-06-10 18:55:00",
+        "description" : "Elden Ring's map promises to be huge, can be tackled in any order, and is made up of six major areas - but there's even more than that to discover.",
+        "url": "./single.php?id=12",
+        "category": {
+            "id" : 10,
+            "title" : "PC",
+            "alias" : "pc"
+        },
+        "cover" : {
+            "src": "./images/12_310.jpg",
+            "srcset": "./images/12_310.jpg 310w, ./images/12_350.jpg 350w, ./images/12_550.jpg 550w, ./images/12_640.jpg 640w",
+            "sizes": "(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+        }
+    }
+]
