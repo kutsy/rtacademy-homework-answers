@@ -9,6 +9,7 @@ abstract class User
     protected int    $_id;
     protected string $_firstName;
     protected string $_lastName;
+    protected string $_roleName;
 
     public function __construct()
     {
@@ -43,5 +44,15 @@ abstract class User
     public function setLastName( string $lastName ): void
     {
         $this->_lastName = $lastName;
+    }
+
+    public function getRoleName(): string
+    {
+        return $this->_roleName;
+    }
+
+    public function setRoleName( string $roleName ): void
+    {
+        $this->_roleName = $roleName;
     }
 }
