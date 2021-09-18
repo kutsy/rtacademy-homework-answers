@@ -54,7 +54,40 @@ class CategoriesModel
      */
     public function existsByAliasExceptID( string $alias, int $id ) : bool
     {
-        // TODO
+        try
+        {
+            // підʼєднуємось до БД
+            $db = \lib\DbConnection::getConnection();
+
+            // готуємо підготований запит з параметрами :alias та :id
+            $statement = $db->prepare(
+                "
+                    SELECT
+                        count(id) AS c
+                    FROM
+                        posts_categories
+                    WHERE
+                        alias = :alias
+                        AND
+                        id <> :id                         
+                "
+            );
+
+            // виконання підготованого запита з параметрами :alias та :id
+            $statement->execute(
+                [
+                    ':alias' => $alias,
+                    ':id' => $id,
+                ]
+            );
+
+            return boolval( $statement->fetch( \PDO::FETCH_ASSOC )['c'] ?? 0 );
+        }
+        catch( \PDOException $e )
+        {
+            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
+            return true;
+        }
     }
 
     /**
@@ -77,7 +110,7 @@ class CategoriesModel
                         posts_categories
                         (title, alias)
                     VALUES
-                        (:title, :alias);
+                        (:title, :alias)
                 "
             );
 
@@ -107,7 +140,40 @@ class CategoriesModel
      */
     public function edit( int $id, string $title, string $alias ) : bool
     {
-        // TODO
+        try
+        {
+            // підʼєднуємось до БД
+            $db = \lib\DbConnection::getConnection();
+
+            // готуємо підготований запит з параметрами :id, :title та :alias
+            $statement = $db->prepare(
+                "
+                    UPDATE 
+                        posts_categories
+                    SET
+                        title = :title,
+                        alias = :alias
+                    WHERE
+                        id = :id
+                "
+            );
+
+            // виконання підготованого запита з параметрами :id, :title та :alias
+            $statement->execute(
+                [
+                    ':id'    => $id,
+                    ':title' => $title,
+                    ':alias' => $alias,
+                ]
+            );
+
+            return true;
+        }
+        catch( \PDOException $e )
+        {
+            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
+            return false;
+        }
     }
 
     /**
@@ -117,6 +183,55 @@ class CategoriesModel
      */
     public function getSingle( int $id ) : ?\lib\entities\Category
     {
-        // TODO
+        try
+        {
+            // підʼєднуємось до БД
+            $db = \lib\DbConnection::getConnection();
+
+            // готуємо підготований запит з параметром :id
+            $statement = $db->prepare(
+                "
+                    SELECT
+                        pc.id,
+                        pc.title,
+                        pc.alias
+                    FROM
+                        posts_categories AS pc
+                    WHERE
+                        pc.id = :id
+                    LIMIT
+                        1
+                "
+            );
+
+            // виконання підготованого запита з параметром :id
+            $statement->execute(
+                [
+                    ':id' => $id,
+                ]
+            );
+
+            $row = $statement->fetch( \PDO::FETCH_ASSOC );
+
+            if( empty( $row ) )
+            {
+                // нічого не знайдено
+                return null;
+            }
+
+            // Category
+            $category = new \lib\entities\Category();
+            $category->setId( (int)$row['id'] );
+            $category->setTitle( $row['title'] );
+            $category->setAlias( $row['alias'] );
+
+            return $category;
+        }
+        catch( \PDOException $e )
+        {
+            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
+
+            return null;
+        }
     }
 }

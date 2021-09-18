@@ -128,6 +128,60 @@ class CategoryController
 
     public function edit( int $id ): ?\lib\entities\Category
     {
-        // TODO
+        // у випадку неавторизованого користувача - переходимо на першу сторінку
+        if( ! \lib\Session::isAuthorized() )
+        {
+            header( 'Location: ./index.php' );
+            return null;
+        }
+
+        // створюємо екземпляр моделі
+        $categoriesModel = new \lib\models\CategoriesModel();
+
+        // отримуємо категорію з БД за ID
+        $category = $categoriesModel->getSingle( $id );
+
+        if( empty( $category ) )
+        {
+            header( 'HTTP/1.1 404 Not Found' );
+            $this->_error_message = 'Категорії з таким ID не існує';
+            return null;
+        }
+
+        // не виконуємо весь код нижче, якщо форма не заповнена
+        if( !empty( $_POST ) )
+        {
+            $title  = $_POST['title'] ?? '';
+            $alias  = $_POST['alias'] ?? '';
+
+            if( $this->_validateTitle( $title ) && $this->_validateAlias( $alias ) )
+            {
+                // перевіряємо на існування категорії з таким же самим alias (оскільки alias це UNIQUE), але іншим ID
+                $result = $categoriesModel->existsByAliasExceptID( $alias, $id );
+
+                if( $result )
+                {
+                    $this->_error_message = 'Категорія з таким alias вже існує';
+                    return $category;       // тут ми маємо повертати початковий екземпляр категорії
+                }
+
+                // редагуємо категорію
+                $result = $categoriesModel->edit( $id, $title, $alias );
+
+                if( empty( $result ) )
+                {
+                    $this->_error_message = 'Сталася помилка при редагуванні категорії';
+                    return $category;       // тут ми маємо повертати початковий екземпляр категорії
+                }
+
+                // заповнюємо повідомлення про успішне редагування категорії
+                $this->_success_message = 'Категорію "' . htmlspecialchars( $title ) . '" успішно відредаговано';
+
+                // для отримання вже оновлених даних з БД необхідно ще раз виконати запит
+                $category = $categoriesModel->getSingle( $id );
+            }
+        }
+
+        return $category;
     }
 }
