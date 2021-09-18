@@ -262,6 +262,16 @@ header {
     background: #fff5f5;
 }
 
+.main-form .success-general-text {
+    color: #009000;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    margin: 0.5rem 0 1rem 0;
+    padding: 1rem;
+    border: 0.1rem solid #f5fff5;
+    background: #f5fff5;
+}
+
 .main-form ul {
     list-style: none;
     margin: 0;
