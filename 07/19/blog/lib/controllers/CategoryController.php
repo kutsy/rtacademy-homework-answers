@@ -126,7 +126,7 @@ class CategoryController
         $this->_success_message = 'Категорію "' . htmlspecialchars( $title ) . '" успішно додано';
     }
 
-    public function edit( int $id ): void
+    public function edit( int $id ): ?\lib\entities\Category
     {
         // TODO
     }

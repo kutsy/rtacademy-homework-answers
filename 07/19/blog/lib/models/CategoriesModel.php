@@ -47,6 +47,17 @@ class CategoriesModel
     }
 
     /**
+     * @param string $alias
+     * @param int    $id
+     *
+     * @return bool
+     */
+    public function existsByAliasExceptID( string $alias, int $id ) : bool
+    {
+        // TODO
+    }
+
+    /**
      * @param string $title
      * @param string $alias
      *
