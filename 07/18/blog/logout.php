@@ -12,8 +12,6 @@ spl_autoload_register(
 // запуск сесії з параметрами
 \lib\Session::start();
 
-// деавторизація користувача
-\lib\Session::deauthorize();
-
-// переходимо на першу сторінку
-header( 'Location: ./index.php' );
+// обробка деавторизації
+$authController    = new \lib\controllers\AuthController();
+$authController->logout();

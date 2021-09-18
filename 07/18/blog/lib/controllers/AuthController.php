@@ -114,6 +114,10 @@ class AuthController
 
     public function logout(): void
     {
-        // TODO
+        // деавторизація користувача
+        \lib\Session::deauthorize();
+
+        // переходимо на першу сторінку
+        header( 'Location: ./index.php' );
     }
 }
