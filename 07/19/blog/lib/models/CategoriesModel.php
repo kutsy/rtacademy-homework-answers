@@ -98,4 +98,14 @@ class CategoriesModel
     {
         // TODO
     }
+
+    /**
+     * @param int $id
+     *
+     * @return \lib\entities\Category|null
+     */
+    public function getSingle( int $id ) : ?\lib\entities\Category
+    {
+        // TODO
+    }
 }
