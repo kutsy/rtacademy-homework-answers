@@ -52,6 +52,11 @@ class Session
         session_destroy();
     }
 
+    public static function getId() : int
+    {
+        return intval( $_SESSION['id'] ?? 0 );
+    }
+
     public static function getFirstName() : string
     {
         return $_SESSION['firstName'] ?? '';

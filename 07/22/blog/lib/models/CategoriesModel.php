@@ -7,6 +7,54 @@ namespace lib\models;
 class CategoriesModel
 {
     /**
+     * @return \lib\entities\Category[]
+     */
+    public function getList() : array
+    {
+        try
+        {
+            // підʼєднуємось до БД
+            $db = \lib\DbConnection::getConnection();
+
+            // виконуємо запит
+            $statement = $db->query(
+                '
+                    SELECT
+                        `id`,
+                        `title`,
+                        `alias`
+                    FROM
+                        posts_categories
+                    ORDER BY
+                        `title` ASC
+                ',
+                \PDO::FETCH_ASSOC
+            );
+
+            $items = [];
+
+            foreach( $statement as $row )
+            {
+                // Category
+                $item = new \lib\entities\Category();
+                $item->setId( (int)$row['id'] );
+                $item->setTitle( $row['title'] );
+                $item->setAlias( $row['alias'] );
+
+                $items[] = $item;
+            }
+
+            return $items;
+        }
+        catch( \PDOException $e )
+        {
+            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
+
+            return [];
+        }
+    }
+
+    /**
      * @param string $alias
      *
      * @return bool

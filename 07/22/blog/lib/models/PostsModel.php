@@ -246,4 +246,108 @@ class PostsModel
             return null;
         }
     }
+
+    /**
+     * @param string $title
+     * @param string $description
+     * @param string $content
+     * @param string $publish_date
+     * @param int    $categoryId
+     * @param int    $coverId
+     * @param int    $statusId
+     *
+     * @return \lib\entities\Post|null
+     */
+    public function add( string $title, string $description, string $content, string $publish_date, int $categoryId, int $coverId, int $statusId ) : ?\lib\entities\Post
+    {
+        try
+        {
+            // підʼєднуємось до БД
+            $db = \lib\DbConnection::getConnection();
+
+            // готуємо підготований запит з параметрами та поверненням ID доданого запису
+            $statement = $db->prepare(
+                "
+                INSERT INTO 
+                posts
+                (
+                    title, 
+                    alias, 
+                    description, 
+                    content, 
+                    publish_date, 
+                    author_id, 
+                    category_id, 
+                    cover_id, 
+                    status_id
+                )
+                VALUES
+                (
+                    :title, 
+                    :alias, 
+                    :description, 
+                    :content, 
+                    :publish_date, 
+                    :author_id, 
+                    :category_id, 
+                    :cover_id, 
+                    :status_id
+                )
+                RETURNING
+                    id
+                "
+            );
+
+            // TODO: необхідна обробка коректності ID автора
+            // TODO: необхідна обробка коректності ID категорії
+            // TODO: необхідна обробка коректності ID стану
+
+            // виконання підготованого запита з параметрами
+            $statement->execute(
+                [
+                    ':title'        => $title,
+                    ':alias'        => $this->_createAlias( $title ),
+                    ':description'  => $description,
+                    ':content'      => $content,
+                    ':publish_date' => date( 'Y-m-d H:i:s', strtotime( $publish_date ) ),
+                    ':author_id'    => \lib\Session::getId(),
+                    ':category_id'  => $categoryId,
+                    ':cover_id'     => $coverId,
+                    ':status_id'    => $statusId,
+                ]
+            );
+
+            $id = (int)( $statement->fetch( \PDO::FETCH_ASSOC )['id'] ?? 0 );
+
+            // Post
+            $post = new \lib\entities\Post();
+            $post->setId( $id );
+
+            return $post;
+        }
+        catch( \PDOException $e )
+        {
+            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
+            return null;
+        }
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return string
+     */
+    protected function _createAlias( string $title ) : string
+    {
+        return
+            preg_replace(
+                '/\-{2,}/',
+                '-',
+                preg_replace(
+                    '/[^0-9a-z-]/',
+                    '-',
+                    strtolower( $title )
+                )
+            );
+    }
 }

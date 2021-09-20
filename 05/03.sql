@@ -48,7 +48,7 @@ CREATE TABLE `posts_categories` (
 CREATE TABLE `posts_covers` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `filename` varchar(128) NOT NULL,
-    `alt` varchar(128) NOT NULL,
+    `alt` varchar(128),
     PRIMARY KEY (`id`),
     UNIQUE KEY `filename` (`filename`)
 );
@@ -104,7 +104,6 @@ CREATE TABLE `posts` (
     `cover_id` int(11) NOT NULL,
     `status_id` int(11) NOT NULL,
     PRIMARY KEY (`id`),
-    UNIQUE KEY `alias` (`alias`),
     FOREIGN KEY (`author_id`) REFERENCES `users` (`id`),
     FOREIGN KEY (`category_id`) REFERENCES `posts_categories` (`id`),
     FOREIGN KEY (`cover_id`) REFERENCES `posts_covers` (`id`),
