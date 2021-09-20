@@ -51,4 +51,9 @@ class Session
         // знищуємо сесію
         session_destroy();
     }
+
+    public static function getFirstName() : string
+    {
+        return $_SESSION['firstName'] ?? '';
+    }
 }

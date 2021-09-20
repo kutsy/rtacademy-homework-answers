@@ -9,6 +9,9 @@ spl_autoload_register(
     }
 );
 
+// запуск сесії з параметрами
+\lib\Session::start();
+
 // отримуємо ID запису
 $postId = intval( preg_replace( '#[^0-9]#', '', $_GET['id'] ) ) ?? 0;
 $post   = null;

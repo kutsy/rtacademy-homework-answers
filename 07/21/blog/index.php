@@ -9,6 +9,9 @@ spl_autoload_register(
     }
 );
 
+// запуск сесії з параметрами
+\lib\Session::start();
+
 $postsModels       = new \lib\models\PostsModel();
 $posts             = $postsModels->getList();
 

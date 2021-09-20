@@ -11,7 +11,36 @@
                 <li><a href="#"><img src="./images/icons/008-youtube.svg" alt="youtube"></a></li>
             </ul>
 
-            <p>Copyright, 2021</p>
+            <p>&copy; Copyright, 2021</p>
+        </div>
+
+        <div class="nav">
+            <h3>User Area</h3>
+
+            <ul>
+                <?php
+
+                if( \lib\Session::isAuthorized() )
+                {
+
+                ?>
+                <li>Hello, <?= \lib\Session::getFirstName() ?></li>
+                <li><a href="./post_add.php">Add Post</a></li>
+                <li><a href="./category_add.php">Add Category</a></li>
+                <li><a href="./logout.php">Logout</a></li>
+                <?php
+
+                }
+                else
+                {
+
+                ?>
+                <li><a href="./login.php">Login</a></li>
+                <?php
+
+                }
+                ?>
+            </ul>
         </div>
 
         <div class="nav">
