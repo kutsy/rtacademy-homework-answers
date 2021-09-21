@@ -10,7 +10,7 @@ spl_autoload_register(
 );
 
 // отримуємо ID запису
-$postId = intval( preg_replace( '#[^0-9]#', '', $_GET['id'] ) ) ?? 0;
+$postId = intval( preg_replace( '#[^0-9]#', '', $_GET['id'] ?? '0' ) );
 $post   = null;
 
 if( !empty( $postId ) )

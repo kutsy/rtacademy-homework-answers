@@ -13,7 +13,7 @@ spl_autoload_register(
 \lib\Session::start();
 
 // отримуємо ID запису
-$postId = intval( preg_replace( '#[^0-9]#', '', $_GET['id'] ) ) ?? 0;
+$postId = intval( preg_replace( '#[^0-9]#', '', $_GET['id'] ?? '0' ) );
 
 // обробка форми редагування запису
 $postController    = new \lib\controllers\PostController();
