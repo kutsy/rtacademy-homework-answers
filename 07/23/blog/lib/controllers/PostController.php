@@ -254,6 +254,34 @@ class PostController
 
     public function edit( int $id ): ?\lib\entities\Post
     {
-        // TODO
+        // у випадку неавторизованого користувача - переходимо на першу сторінку
+        if( ! \lib\Session::isAuthorized() )
+        {
+            header( 'Location: ./index.php' );
+            return null;
+        }
+
+        // створюємо екземпляр моделі PostsModel
+        $postsModel = new \lib\models\PostsModel();
+
+        // отримуємо категорію з БД за ID
+        $post = $postsModel->getSingle( $id );       // TODO: додати метод отримання запису без врахування стану та дати публікації
+
+        if( empty( $post ) )
+        {
+            header( 'HTTP/1.1 404 Not Found' );
+            $this->_error_message = 'Запису з таким ID не існує';
+            return null;
+        }
+
+        // TODO: перевірка на автора/адміна
+
+        // не виконуємо весь код нижче, якщо форма не заповнена
+        if( !empty( $_POST ) )
+        {
+            // TODO
+        }
+
+        return $post;
     }
 }
