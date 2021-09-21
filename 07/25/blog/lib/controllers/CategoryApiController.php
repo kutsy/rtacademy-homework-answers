@@ -76,9 +76,16 @@ class CategoryApiController extends CategoryController
         $title  = $_POST['title'] ?? '';
         $alias  = $_POST['alias'] ?? '';
 
-        if( !$this->_validateTitle( $title ) || !$this->_validateAlias( $alias ) )
+        if( !$this->_validateTitle( $title ) )
         {
-            $response['status'] = 400;
+            $response['status'] = 411;
+            $response['error']  = $this->_error_message;
+            return $response;
+        }
+
+        if( !$this->_validateAlias( $alias ) )
+        {
+            $response['status'] = 412;
             $response['error']  = $this->_error_message;
             return $response;
         }
@@ -91,7 +98,7 @@ class CategoryApiController extends CategoryController
 
         if( $result )
         {
-            $response['status'] = 400;
+            $response['status'] = 450;
             $response['error']  = 'Категорія з таким alias вже існує';
             return $response;
         }
@@ -101,7 +108,7 @@ class CategoryApiController extends CategoryController
 
         if( empty( $result ) )
         {
-            $response['status'] = 400;
+            $response['status'] = 460;
             $response['error']  = 'Сталася помилка при додаванні категорії';
             return $response;
         }
@@ -150,9 +157,16 @@ class CategoryApiController extends CategoryController
         $title  = $_PUT['title'] ?? '';
         $alias  = $_PUT['alias'] ?? '';
 
-        if( !$this->_validateTitle( $title ) || !$this->_validateAlias( $alias ) )
+        if( !$this->_validateTitle( $title ) )
         {
-            $response['status'] = 400;
+            $response['status'] = 411;
+            $response['error']  = $this->_error_message;
+            return $response;
+        }
+
+        if( !$this->_validateAlias( $alias ) )
+        {
+            $response['status'] = 412;
             $response['error']  = $this->_error_message;
             return $response;
         }
@@ -162,7 +176,7 @@ class CategoryApiController extends CategoryController
 
         if( $result )
         {
-            $response['status'] = 400;
+            $response['status'] = 450;
             $response['error']  = 'Категорія з таким alias вже існує';
             return $response;
         }
@@ -172,7 +186,7 @@ class CategoryApiController extends CategoryController
 
         if( empty( $result ) )
         {
-            $response['status'] = 400;
+            $response['status'] = 460;
             $response['error']  = 'Сталася помилка при редагуванні категорії';
             return $response;
         }
@@ -215,7 +229,7 @@ class CategoryApiController extends CategoryController
         }
 
         // видаляємо категорію з БД за ID
-        $category = $categoriesModel->delete( $id );
+        $categoriesModel->delete( $id );
 
         $response['status'] = 200;
 

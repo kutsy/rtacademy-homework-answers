@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: "#7.25"
+
+servers:
+  - url: http://127.0.0.1
+    description: Local
+
+paths:
+  /blog/api/contacts.php:
+    get:
+      tags:
+        - "Category"
+      summary: "Отримання всіх категорій"
+      description: ""
+      operationId: "getList"
+
+      responses:
+        "200":
+          description: Успішно отримано дані
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 200
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'  
+    post:
+      tags:
+        - "Category"
+      summary: "Додавання нової категорії"
+      description: ""
+      operationId: "create"
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Назва категорії
+                  minLength: 2
+                  maxLength: 32
+                alias:
+                  type: string
+                  description: Аліас категорії
+                  minLength: 2
+                  maxLength: 32
+              required:
+                - title
+                - alias
+                
+      responses:
+        "411":
+          description: <Відповідні помилки валідації поля Назва>
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 411
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Необхідно заповнити поле "Назва"
+        "412":
+          description: <Відповідні помилки валідації поля Аліас>
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 412
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Необхідно заповнити поле "Аліас"
+        "450":
+          description: Категорія з таким alias вже існує
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 450
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Категорія з таким alias вже існує
+        "460":
+          description: Сталася помилка при додаванні категорії
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 460
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Сталася помилка при додаванні категорії
+                    
+        "200":
+          description: Успішно додано
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 200
+                  data:
+                    $ref: '#/components/schemas/Category'
+  
+  /blog/api/contacts.php?id={id}:
+    get:
+      tags:
+        - "Category"
+      summary: "Отримання категорії за ID"
+      description: ""
+      operationId: "getSingle"
+      
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID категорії
+          schema:
+            type: integer
+            minimum: 1
+
+      responses:
+        "200":
+          description: Успішно отримано дані
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 200
+                  data:
+                    $ref: '#/components/schemas/Category'
+
+    put:
+      tags:
+        - "Category"
+      summary: "Редагування категорії"
+      description: ""
+      operationId: "update"
+      
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID категорії
+          schema:
+            type: integer
+            minimum: 1
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Назва категорії
+                  minLength: 2
+                  maxLength: 32
+                alias:
+                  type: string
+                  description: Аліас категорії
+                  minLength: 2
+                  maxLength: 32
+              required:
+                - title
+                - alias
+                
+      responses:
+        "404":
+          description: Категорії з таким ID не існує
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 404
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Категорії з таким ID не існує
+        "411":
+          description: <Відповідні помилки валідації поля Назва>
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 411
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Необхідно заповнити поле "Назва"
+        "412":
+          description: <Відповідні помилки валідації поля Аліас>
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 412
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Необхідно заповнити поле "Аліас"
+        "450":
+          description: Категорія з таким alias вже існує
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 450
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Категорія з таким alias вже існує
+        "460":
+          description: Сталася помилка при редагуванні категорії
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 460
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Сталася помилка при редагуванні категорії
+                    
+        "200":
+          description: Успішно додано
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 200
+                  data:
+                    $ref: '#/components/schemas/Category'
+                
+    delete:
+      tags:
+        - "Category"
+      summary: "Видалення категорії"
+      description: ""
+      operationId: "delete"
+      
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID категорії
+          schema:
+            type: integer
+            minimum: 1
+                
+      responses:
+        "404":
+          description: Категорії з таким ID не існує
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 404
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: Категорії з таким ID не існує
+                    
+        "200":
+          description: Успішно видалено
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 200     
+                
+
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID
+          example: 123
+        title:
+          type: string
+          description: Назва
+          example: Привіт Світ
+        alias:
+          type: string
+          description: Аліас
+          example: hello-world
+      required:  
+        - id
+        - title
+        - alias
