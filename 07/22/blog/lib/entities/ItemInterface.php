@@ -34,9 +34,9 @@ interface ItemInterface
 
     public function setCategory( Category $category );
 
-    public function getCover(): Cover;
+    public function getCover(): PostCover;
 
-    public function setCover( Cover $cover );
+    public function setCover( PostCover $cover );
 
     public function getUrl(): string;
 }

@@ -80,8 +80,10 @@ class PostsModel
                 $category->setTitle( $row['category_title'] );
                 $category->setAlias( $row['category_alias'] );
 
-                // Cover
-                $cover = new \lib\entities\Cover( $row['cover_filename'], $row['cover_alt'] );
+                // PostCover
+                $cover = new \lib\entities\PostCover();
+                $cover->setFilename( $row['cover_filename'] );
+                $cover->setAlt( $row['cover_alt'] );
 
                 // Post
                 $post = new \lib\entities\Post();
@@ -222,8 +224,10 @@ class PostsModel
             $category->setTitle( $row['category_title'] );
             $category->setAlias( $row['category_alias'] );
 
-            // Cover
-            $cover = new \lib\entities\Cover( $row['cover_filename'], $row['cover_alt'] );
+            // PostCover
+            $cover = new \lib\entities\PostCover();
+            $cover->setFilename( $row['cover_filename'] );
+            $cover->setAlt( $row['cover_alt'] );
 
             // Post
             $post = new \lib\entities\Post();

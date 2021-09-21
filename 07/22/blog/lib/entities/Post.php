@@ -6,15 +6,15 @@ namespace lib\entities;
 
 class Post implements ItemInterface
 {
-    protected int      $_id;
-    protected string   $_title;
-    protected string   $_alias;
-    protected string   $_description;
-    protected string   $_content;
-    protected Author   $_author;
-    protected int      $_publishDate;
-    protected Category $_category;
-    protected Cover    $_cover;
+    protected int       $_id;
+    protected string    $_title;
+    protected string    $_alias;
+    protected string    $_description;
+    protected string    $_content;
+    protected Author    $_author;
+    protected int       $_publishDate;
+    protected Category  $_category;
+    protected PostCover $_cover;
 
     public function __construct()
     {
@@ -101,12 +101,12 @@ class Post implements ItemInterface
         $this->_category = $category;
     }
 
-    public function getCover(): Cover
+    public function getCover(): PostCover
     {
         return $this->_cover;
     }
 
-    public function setCover( Cover $cover ): void
+    public function setCover( PostCover $cover ): void
     {
         $this->_cover = $cover;
     }
