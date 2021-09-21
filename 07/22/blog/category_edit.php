@@ -27,7 +27,7 @@ require_once( './includes/header.php' );
 
 ?>
 <main class="main-form">
-    <h1>Редагування категорії <?= $category->getTitle() ?? '' ?></h1>
+    <h1>Редагування категорії <?= $category?->getTitle() ?? '' ?></h1>
 
     <?php
 
@@ -47,8 +47,10 @@ require_once( './includes/header.php' );
         echo( '<div class="success-general-text">' . $successMessage . '</div>' );
     }
 
-    ?>
+    if( !empty( $category ) )
+    {
 
+    ?>
     <form method="post" name="category" action="" class="form" id="form-category">
         <ul>
             <li><label for="form-category-title">Назва<span>*</span></label></li>
@@ -64,6 +66,11 @@ require_once( './includes/header.php' );
             <li><button type="submit" name="submit" id="form-category-submit">Надіслати</button></li>
         </ul>
     </form>
+    <?php
+
+    }
+
+    ?>
 </main>
 
 <script>
