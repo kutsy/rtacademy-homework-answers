@@ -142,16 +142,16 @@ class CategoriesModel
      * @param string $title
      * @param string $alias
      *
-     * @return bool
+     * @return \lib\entities\Category|null
      */
-    public function add( string $title, string $alias ) : bool
+    public function add( string $title, string $alias ) : ?\lib\entities\Category
     {
         try
         {
             // підʼєднуємось до БД
             $db = \lib\DbConnection::getConnection();
 
-            // готуємо підготований запит з параметрами :title та :alias
+            // готуємо підготований запит з параметрами :title та :alias та поверненням ID доданого запису
             $statement = $db->prepare(
                 "
                     INSERT INTO 
@@ -159,6 +159,8 @@ class CategoriesModel
                         (title, alias)
                     VALUES
                         (:title, :alias)
+                    RETURNING
+                        id
                 "
             );
 
@@ -170,12 +172,18 @@ class CategoriesModel
                 ]
             );
 
-            return true;
+            $id = (int)( $statement->fetch( \PDO::FETCH_ASSOC )['id'] ?? 0 );
+
+            // Category
+            $item = new \lib\entities\Category();
+            $item->setId( $id );
+
+            return $item;
         }
         catch( \PDOException $e )
         {
             echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-            return false;
+            return null;
         }
     }
 
@@ -280,6 +288,45 @@ class CategoriesModel
             echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
 
             return null;
+        }
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return bool
+     */
+    public function delete( int $id ) : bool
+    {
+        try
+        {
+            // підʼєднуємось до БД
+            $db = \lib\DbConnection::getConnection();
+
+            // готуємо підготований запит з параметром :id
+            $statement = $db->prepare(
+                "
+                    DELETE 
+                    FROM
+                        posts_categories
+                    WHERE
+                        id = :id
+                "
+            );
+
+            // виконання підготованого запита з параметром :id
+            $statement->execute(
+                [
+                    ':id'    => $id,
+                ]
+            );
+
+            return true;
+        }
+        catch( \PDOException $e )
+        {
+            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
+            return false;
         }
     }
 }
