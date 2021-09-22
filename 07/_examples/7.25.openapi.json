@@ -42,6 +42,28 @@
                 }
               }
             }
+          },
+          "490": {
+            "description": "Сталася помилка при роботі з базою даних",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "Стан відповіді",
+                      "example": 490
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Текст помилки",
+                      "example": "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -187,6 +209,28 @@
                 }
               }
             }
+          },
+          "490": {
+            "description": "Сталася помилка при роботі з базою даних",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "Стан відповіді",
+                      "example": 490
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Текст помилки",
+                      "example": "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -225,6 +269,28 @@
                     },
                     "data": {
                       "$ref": "#/components/schemas/Category"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "490": {
+            "description": "Сталася помилка при роботі з базою даних",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "Стан відповіді",
+                      "example": 490
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Текст помилки",
+                      "example": "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
                     }
                   }
                 }
@@ -409,6 +475,28 @@
                 }
               }
             }
+          },
+          "490": {
+            "description": "Сталася помилка при роботі з базою даних",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "Стан відповіді",
+                      "example": 490
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Текст помилки",
+                      "example": "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -465,6 +553,28 @@
                       "type": "string",
                       "description": "Текст помилки",
                       "example": "Категорії з таким ID не існує"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "490": {
+            "description": "Сталася помилка при роботі з базою даних",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "Стан відповіді",
+                      "example": 490
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Текст помилки",
+                      "example": "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
                     }
                   }
                 }
