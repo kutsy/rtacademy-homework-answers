@@ -17,6 +17,21 @@ paths:
       operationId: "getList"
 
       responses:
+        "490":
+          description: Сталася помилка при роботі з базою даних
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 490
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
         "200":
           description: Успішно отримано дані
           content:
@@ -32,6 +47,7 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Category'  
+    
     post:
       tags:
         - "Category"
@@ -121,7 +137,21 @@ paths:
                     type: string
                     description: Текст помилки
                     example: Сталася помилка при додаванні категорії
-                    
+        "490":
+          description: Сталася помилка при роботі з базою даних
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 490
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
         "200":
           description: Успішно додано
           content:
@@ -153,6 +183,21 @@ paths:
             minimum: 1
 
       responses:
+        "490":
+          description: Сталася помилка при роботі з базою даних
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 490
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
         "200":
           description: Успішно отримано дані
           content:
@@ -279,7 +324,21 @@ paths:
                     type: string
                     description: Текст помилки
                     example: Сталася помилка при редагуванні категорії
-                    
+        "490":
+          description: Сталася помилка при роботі з базою даних
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 490
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
         "200":
           description: Успішно додано
           content:
@@ -325,7 +384,21 @@ paths:
                     type: string
                     description: Текст помилки
                     example: Категорії з таким ID не існує
-                    
+        "490":
+          description: Сталася помилка при роботі з базою даних
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    description: Стан відповіді
+                    example: 490
+                  error:
+                    type: string
+                    description: Текст помилки
+                    example: "Помилка БД: SQLSTATE[HY000] [2002] Connection refused"
         "200":
           description: Успішно видалено
           content:
@@ -337,7 +410,6 @@ paths:
                     type: integer
                     description: Стан відповіді
                     example: 200     
-                
 
 components:
   schemas:

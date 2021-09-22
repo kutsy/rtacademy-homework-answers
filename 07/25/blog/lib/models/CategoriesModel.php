@@ -7,6 +7,7 @@ namespace lib\models;
 class CategoriesModel
 {
     /**
+     * @throws \Exception
      * @return \lib\entities\Category[]
      */
     public function getList() : array
@@ -48,15 +49,14 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-
-            return [];
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 
     /**
      * @param string $alias
      *
+     * @throws \Exception
      * @return bool
      */
     public function existsByAlias( string $alias ) : bool
@@ -89,8 +89,7 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-            return true;
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 
@@ -98,6 +97,7 @@ class CategoriesModel
      * @param string $alias
      * @param int    $id
      *
+     * @throws \Exception
      * @return bool
      */
     public function existsByAliasExceptID( string $alias, int $id ) : bool
@@ -133,8 +133,7 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-            return true;
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 
@@ -142,6 +141,7 @@ class CategoriesModel
      * @param string $title
      * @param string $alias
      *
+     * @throws \Exception
      * @return \lib\entities\Category|null
      */
     public function add( string $title, string $alias ) : ?\lib\entities\Category
@@ -182,8 +182,7 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-            return null;
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 
@@ -192,6 +191,7 @@ class CategoriesModel
      * @param string $title
      * @param string $alias
      *
+     * @throws \Exception
      * @return bool
      */
     public function edit( int $id, string $title, string $alias ) : bool
@@ -227,14 +227,14 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-            return false;
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 
     /**
      * @param int $id
      *
+     * @throws \Exception
      * @return \lib\entities\Category|null
      */
     public function getSingle( int $id ) : ?\lib\entities\Category
@@ -285,15 +285,14 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-
-            return null;
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 
     /**
      * @param int $id
      *
+     * @throws \Exception
      * @return bool
      */
     public function delete( int $id ) : bool
@@ -325,8 +324,7 @@ class CategoriesModel
         }
         catch( \PDOException $e )
         {
-            echo( '<div style="padding:1rem;background:#a00;color:#fff;">Помилка БД: ' . $e->getMessage() . '</div>' );
-            return false;
+            throw new \Exception( 'Помилка БД: ' .$e->getMessage() );
         }
     }
 }
