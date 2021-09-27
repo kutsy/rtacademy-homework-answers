@@ -9,12 +9,10 @@
 
         if( !empty( $post ) )
         {
-            echo( $post->getTitle() . ' | ' . $siteName );
+            echo( $post->getTitle() . ' | ' );
         }
-        else
-        {
-            echo( $siteName );
-        }
+
+        echo( $siteName );
 
         ?>
         </title>
