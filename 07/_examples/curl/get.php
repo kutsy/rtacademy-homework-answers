@@ -24,5 +24,7 @@ if( curl_error( $ch ) )
     echo( 'Помилка: ' . curl_error( $ch ) );
 }
 
+var_dump( htmlspecialchars( $html ) );
+
 // закінчуємо сеанс
 curl_close( $ch );

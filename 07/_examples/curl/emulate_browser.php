@@ -8,7 +8,8 @@ declare( strict_types=1 );
 $ch = curl_init();
 
 // ініціалізуємо параметри сеанса
-curl_setopt( $ch, CURLOPT_URL, 'https://www.google.com/' );
+curl_setopt( $ch, CURLOPT_URL, 'http://rtacademy_web/07/15/blog/posts_ajax.php?page=3' );
+
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );  // для повернення результату передачі в якості рядка
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );  // для слідування будь-якому заголовку "Location:"
 
@@ -24,6 +25,14 @@ curl_setopt( $ch, CURLOPT_COOKIEJAR, __DIR__ . '/cookie.txt' );
 
 // виконуємо запит на сервер і отримуємо результат
 $html = curl_exec( $ch );
+
+// у випадку вининення помилки - відобраємо її
+if( curl_error( $ch ) )
+{
+    echo( 'Помилка: ' . curl_error( $ch ) );
+}
+
+var_dump( $html );
 
 // закінчуємо сеанс
 curl_close( $ch );
