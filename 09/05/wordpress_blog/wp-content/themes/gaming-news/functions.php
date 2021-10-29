@@ -1,5 +1,8 @@
 <?php
 
+// вмикаємо керування <title> через WordPress
+add_theme_support('title-tag');
+
 // вимикаємо відображення тега <meta name="generator" content="WordPress 5.8.1">
 remove_action('wp_head', 'wp_generator');
 

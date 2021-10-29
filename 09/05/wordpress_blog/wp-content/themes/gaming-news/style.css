@@ -100,6 +100,12 @@ header {
         font-family: 'Fira Sans Extra Condensed', Arial, sans-serif;
     }
 
+.main-posts > h2 {
+    text-align: center;
+    font-size: 2.7rem;
+    margin: 0 auto 2rem auto;
+}
+
 .main-posts .posts {
     border-top: 0.1rem solid #000;
     padding: 2rem 0 0 0;
@@ -175,19 +181,20 @@ header {
         background: #25294b;
     }
 
-nav.pagination {
-    font-size: 1rem;
-    margin: 2rem auto;
-    max-width: 24rem;
-    text-align: center;
-}
-nav.pagination a, nav.pagination span {
-    display: inline-block;
-    padding: 0 0.5rem;
-}
-nav.pagination span {
-    font-weight: bold;
-}
+    .main-posts nav.pagination {
+        font-size: 1rem;
+        margin: 2rem auto;
+        max-width: 24rem;
+        text-align: center;
+    }
+        .main-posts nav.pagination a,
+        .main-posts nav.pagination span {
+            display: inline-block;
+            padding: 0 0.5rem;
+        }
+        nav.pagination span {
+            font-weight: bold;
+        }
 
 /* one article styles */
 
@@ -201,6 +208,7 @@ nav.pagination span {
 
         .main-post .post .post-image img {
             width: 100%;
+            height: auto !important;
         }
             .main-post .post .post-header h1 {
                 font-size: 2.5rem;
@@ -251,6 +259,36 @@ nav.pagination span {
             width: 100%;
             margin: 0 auto;
         }
+    .main-post .post-navigation .nav-links {
+
+        padding: 2rem 0;
+        font-size: 1rem;
+    }
+        .main-post .post-navigation .nav-previous {
+            padding-left: 2rem;
+        }
+        .main-post .post-navigation .nav-next {
+            padding-right: 2rem;
+            text-align: right;
+        }
+        .main-post .post-navigation .nav-links a {
+            display: inline-block;
+        }
+            .main-post .post-navigation .nav-links a .nav-subtitle {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 0.7rem;
+                line-height: 1.5rem;
+                text-transform: uppercase;
+            }
+            .main-post .post-navigation .nav-links a .nav-title {
+                color: #16171e;
+            }
+
+    .main-post .comments-area {
+        padding: 3rem 0;
+        background-color: #f4f5f8;
+    }
 
 .main-post .e404 {
     margin: 10rem 0 10rem 0;
@@ -494,6 +532,23 @@ footer {
 
     .main-post .post .post-content .text {
         width: 80%;
+    }
+
+    .main-post .post-navigation .nav-links {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+    .main-post .post-navigation .nav-previous,
+    .main-post .post-navigation .nav-next {
+        max-width: 40%;
+    }
+
+    .main-post .comments-area .comment-respond {
+        width: 80%;
+        margin: 1rem auto;
     }
 
     .main-form ul li img.preview {

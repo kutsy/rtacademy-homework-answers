@@ -7,6 +7,12 @@
     {
         gaming_news_get_last_top_article();
     }
+    elseif( is_category() )
+    {
+        ?>
+        <h2><?php single_cat_title() ?></h2>
+        <?php
+    }
 
     ?>
     <div class="posts">
