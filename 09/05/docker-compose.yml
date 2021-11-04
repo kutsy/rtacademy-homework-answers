@@ -53,7 +53,7 @@ services:                                         # ОПИС СЕРВІСІВ
     working_dir: /var/www                         # робоча директорія
     volumes:                                      # монтування томів (persistent storage) всередину контейнера
       - ./wordpress_blog:/var/www:ro              # тут необхідно в лівому аргументі (до двокрапки) вказати коректний шлях до ваших файлів
-      - ./rtacademy_wordpress_web/etc/nginx/conf.d:/etc/nginx/conf.d                                              # налаштування веб-севрвера nginx
+      - ./rtacademy_wordpress_web/etc/nginx/conf.d:/etc/nginx/conf.d                                              # налаштування веб-сервера nginx
       - ./wordpress_blog/wp-content/themes/gaming-news:/var/www/wp-content/themes/gaming-news:rw                  # шлях до теми
     ports:                                        # список відкритих назовні портів <hostPort>:<containerPort>
       - "0.0.0.0:8080:80/tcp"                     # (відкрити підʼєднання на порт 80 за межами контейнера з будь-якої адреси IPv4 та на порт 8080 за протоколом TCP)
