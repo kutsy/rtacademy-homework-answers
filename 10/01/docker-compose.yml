@@ -1,5 +1,5 @@
 # $ docker-compose down --remove-orphans
-# $ docker-compose build
+# $ docker-compose build --parallel --no-cache
 # $ docker-compose up -d
 
 version: "3.8"
@@ -34,7 +34,7 @@ services:                                         # ОПИС СЕРВІСІВ
     restart: unless-stopped                       # політика перезавантажень сервіса (допоки не буде зупинено)
     working_dir: /var/www                         # робоча директорія
     volumes:                                      # монтування томів (persistent storage) всередину контейнера
-      - ./symfony_blog:/var/www:rw               # тут необхідно в лівому аргументі (до двокрапки) вказати коректний шлях до ваших файлів
+      - ./symfony_blog:/var/www:rw                # тут необхідно в лівому аргументі (до двокрапки) вказати коректний шлях до ваших файлів
     depends_on:                                   # цей сервіс залежить від наступних сервісів
       - rtacademy_symfony_database
     networks:                                     # локальна мережа контейнера
