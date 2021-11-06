@@ -3,9 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/style.css" media="all">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}" media="all">
     <title>{% block title %}{% endblock %}Gaming News</title>
 </head>
 <body>
@@ -27,9 +25,9 @@
             <h3><a href="/">Gaming News</a></h3>
 
             <ul class="social">
-                <li><a href="#"><img src="/images/icons/001-facebook.svg" alt="facebook"></a></li>
-                <li><a href="#"><img src="/images/icons/013-twitter.svg" alt="twitter"></a></li>
-                <li><a href="#"><img src="/images/icons/008-youtube.svg" alt="youtube"></a></li>
+                <li><a href="#"><img src="{{ asset('images/icons/001-facebook.svg') }}" alt="facebook"></a></li>
+                <li><a href="#"><img src="{{ asset('images/icons/013-twitter.svg') }}" alt="twitter"></a></li>
+                <li><a href="#"><img src="{{ asset('images/icons/008-youtube.svg') }}" alt="youtube"></a></li>
             </ul>
 
             <p>&copy; Copyright, {{ "now"|date("Y") }}</p>
