@@ -23,7 +23,7 @@ class PostCover
     private $filename;
 
     /**
-     * @ORM\Column(type="string", length=128, nullable=true)
+     * @ORM\Column(type="string", length=128)
      */
     private $alt;
 
@@ -49,7 +49,7 @@ class PostCover
         return $this->alt;
     }
 
-    public function setAlt(?string $alt): self
+    public function setAlt(string $alt): self
     {
         $this->alt = $alt;
 

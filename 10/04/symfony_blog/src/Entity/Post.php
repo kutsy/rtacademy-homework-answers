@@ -46,25 +46,25 @@ class Post
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $author_id;
+    private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity=PostCategory::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $category_id;
+    private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=PostCover::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $cover_id;
+    private $cover;
 
     /**
      * @ORM\ManyToOne(targetEntity=PostStatus::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $status_id;
+    private $status;
 
     public function getId(): ?int
     {
@@ -131,50 +131,50 @@ class Post
         return $this;
     }
 
-    public function getAuthorId(): ?User
+    public function getAuthor(): ?User
     {
-        return $this->author_id;
+        return $this->author;
     }
 
-    public function setAuthorId(?User $author_id): self
+    public function setAuthor(?User $author): self
     {
-        $this->author_id = $author_id;
+        $this->author = $author;
 
         return $this;
     }
 
-    public function getCategoryId(): ?PostCategory
+    public function getCategory(): ?PostCategory
     {
-        return $this->category_id;
+        return $this->category;
     }
 
-    public function setCategoryId(?PostCategory $category_id): self
+    public function setCategory(?PostCategory $category): self
     {
-        $this->category_id = $category_id;
+        $this->category = $category;
 
         return $this;
     }
 
-    public function getCoverId(): ?PostCover
+    public function getCover(): ?PostCover
     {
-        return $this->cover_id;
+        return $this->cover;
     }
 
-    public function setCoverId(?PostCover $cover_id): self
+    public function setCover(?PostCover $cover): self
     {
-        $this->cover_id = $cover_id;
+        $this->cover = $cover;
 
         return $this;
     }
 
-    public function getStatusId(): ?PostStatus
+    public function getStatus(): ?PostStatus
     {
-        return $this->status_id;
+        return $this->status;
     }
 
-    public function setStatusId(?PostStatus $status_id): self
+    public function setStatus(?PostStatus $status): self
     {
-        $this->status_id = $status_id;
+        $this->status = $status;
 
         return $this;
     }
