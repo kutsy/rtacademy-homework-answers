@@ -53,4 +53,24 @@ class PostRepository extends ServiceEntityRepository
 
         return new Paginator( $query );
     }
+
+    /**
+     * @param int $id
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @return \App\Entity\Post|null
+     */
+    public function getActivePost( int $id ) : ?Post
+    {
+        return
+            $this->createQueryBuilder( 'p' )
+                 ->innerJoin( 'p.status', 'ps' )
+                 ->andWhere( 'ps.name = :active' )
+                 ->setParameter( 'active', 'active' )
+                 ->andWhere( 'p.id = :id' )
+                 ->setParameter( 'id', $id )
+                 ->setMaxResults( 1 )
+                 ->getQuery()
+                 ->getOneOrNullResult();
+    }
 }
