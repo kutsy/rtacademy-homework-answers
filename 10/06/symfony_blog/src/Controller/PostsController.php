@@ -10,13 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostsController extends AbstractController
 {
     #[Route('/', name: 'homepage', methods: ['GET', 'HEAD'])]
-    public function index( PostRepository $post_repository ): Response
+    public function index( PostRepository $postRepository ): Response
     {
         // Топ запис
-        $top_post               = $post_repository->getTopPost();
+        $top_post               = $postRepository->getTopPost();
 
         // Останні N активних записів
-        $latest_posts_paginator = $post_repository->getLatestPosts();
+        $latest_posts_paginator = $postRepository->getLatestPosts();
 
         return $this->render(
             'posts/index.html.twig',
