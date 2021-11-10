@@ -15,7 +15,14 @@
         {% if posts|length > 0 %}
             {% for post in posts %}
                 <article id="post-{{ post.id }}">
-                    <a href="#" class="cover">{{ include('posts/_post_cover_list.html.twig', {post: post}) }}</a>
+                    <a href="#" class="cover">
+                        <img
+                            src="/images/{{ post.cover.filename }}_310.jpg"
+                            srcset="/images/{{ post.cover.filename }}_310.jpg 310w, /images/{{ post.cover.filename }}_350.jpg 350w, /images/{{ post.cover.filename }}_550.jpg 550w, /images/{{ post.cover.filename }}_640.jpg 640w"
+                            sizes="(max-width: 48rem) 550px, (max-width: 62rem) 350px, (max-width: 75rem) 310px, 550px"
+                            alt="{{ post.cover.alt|e }}"
+                        />
+                    </a>
                     <a href="#" class="title"><h2>{{ post.title }}</h2></a>
                     <time datetime="{{ post.publishDate|date('c') }}">{{ post.publishDate|date('d.m.Y H:i') }}</time>
                     <a href="#" class="description">{{ post.description }}</a>
