@@ -11,7 +11,11 @@
 <header>
     <a href="{{ path('homepage') }}" class="logo"><h1>Gaming News</h1></a>
     <nav>
-        <!-- TODO -->
+        <ul>
+            {% for item in websiteMenu %}
+                <li><a href="{{ item.href }}" title="{{ item.title|e }}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
     </nav>
 </header>
 
@@ -38,7 +42,14 @@
         </div>
 
         <div class="nav">
-            <!-- TODO -->
+            <h3>Main Navigation</h3>
+
+            <ul>
+                <li><a href="{{ path('homepage') }}" title="Home">Home</a></li>
+                {% for item in websiteMenu %}
+                    <li><a href="{{ item.href }}" title="{{ item.title|e }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 

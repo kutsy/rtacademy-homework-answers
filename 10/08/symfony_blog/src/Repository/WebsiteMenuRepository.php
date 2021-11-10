@@ -19,32 +19,11 @@ class WebsiteMenuRepository extends ServiceEntityRepository
         parent::__construct($registry, WebsiteMenu::class);
     }
 
-    // /**
-    //  * @return WebsiteMenu[] Returns an array of WebsiteMenu objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return \App\Entity\WebsiteMenu[]
+     */
+    public function findAll()
     {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->findBy( [], [ 'order_position' => 'ASC' ] );
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?WebsiteMenu
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
