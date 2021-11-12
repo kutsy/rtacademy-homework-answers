@@ -1,17 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Posts | {% endblock %}
 
 {% block body %}
 <main class="main-posts">
-
-    {% if top_post %}
-        <article class="top-article">
-            TOP ARTICLE <a href="{{ path('post_view', {id: top_post.id, alias: top_post.alias}) }}">{{ top_post.title }}</a>
-        </article>
-    {% endif %}
-
-    {% if posts|length > 0 %}
+    {% if posts|length > 0 %}     {# тут є бага (можливо у \Doctrine\ORM\Tools\Pagination\Paginator) при запиті /post/list/100500 - не переходить до else{} #}
         <div class="posts">
             {% for post in posts %}
                 <article id="post-{{ post.id }}">
@@ -31,11 +24,16 @@
             {% endfor %}
         </div>
 
-        {% if next_page_offset < posts|length %}
-            <nav class="pagination">
+        <nav class="pagination">
+            {% if previous_page_offset == 0 %}
+                <a href="{{ path('homepage') }}">Previous</a>
+            {% elseif previous_page_offset > 0 %}
+                <a href="{{ path('posts_list', { offset: previous_page_offset }) }}">Previous</a>
+            {% endif %}
+            {% if next_page_offset < posts|length %}
                 <a href="{{ path('posts_list', { offset: next_page_offset }) }}">Next</a>
-            </nav>
-        {% endif %}
+            {% endif %}
+        </nav>
     {% else %}
         <div class="posts">
             <div class="no-articles">No articles</div>
