@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Авторизація | {% endblock %}
+
+{% block body %}
+    <main class="main-form">
+        <h1>Авторизація</h1>
+
+        {% if error %}
+            <div class="error-general-text">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('login') }}" method="post" name="user" class="form" id="form-user">
+            <ul>
+                <li><label for="form-user-login">Логін<span>*</span></label></li>
+                <li>
+                    <input type="text" minlength="2" maxlength="32" value="{{ login }}" name="_username" id="form-user-login" required placeholder="Введіть логін">
+                </li>
+
+                <li><label for="form-user-password">Пароль<span>*</span></label></li>
+                <li>
+                    <input type="password" minlength="8" maxlength="32" value="" name="_password" id="form-user-password" required placeholder="Введіть пароль" autocomplete="off">
+                </li>
+
+                <li><button type="submit" name="submit" id="form-user-submit">Надіслати</button></li>
+            </ul>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {# <input type="hidden" name="_target_path" value="/account"/> #}
+        </form>
+    </main>
+{% endblock %}

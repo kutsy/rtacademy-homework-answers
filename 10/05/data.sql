@@ -49,7 +49,7 @@ VALUES
 
 INSERT INTO user
 (login, password, email, lastname, firstname)
-VALUES('adam.bankhurst', '5f4dcc3b5aa765d61d8327deb882cf99', 'adam.bankhurst@ign.com', 'Bankhurst','Adam');
+VALUES('adam.bankhurst', '$2y$13$Wtzc2QLUxvNy0SLX3fPwauMYE3x38u7Su5VdSjNC3Ew4uMYDXl1le', 'adam.bankhurst@ign.com', 'Bankhurst','Adam');
 -- 1
 
 INSERT INTO post_cover
@@ -99,7 +99,7 @@ VALUES(
 
 INSERT INTO user
 (login, password, email, lastname, firstname)
-VALUES('matt.kim', '5f4dcc3b5aa765d61d8327deb882cf99', 'matt.kim@ign.com', 'Kim','Matt T.M.');
+VALUES('matt.kim', '$2y$13$Wtzc2QLUxvNy0SLX3fPwauMYE3x38u7Su5VdSjNC3Ew4uMYDXl1le', 'matt.kim@ign.com', 'Kim','Matt T.M.');
 -- 2
 
 INSERT INTO post_cover
@@ -119,7 +119,7 @@ VALUES(
 
 INSERT INTO user
 (login, password, email, lastname, firstname)
-VALUES('joe.skrebels', '5f4dcc3b5aa765d61d8327deb882cf99', 'joe.skrebels@ign.com', 'Skrebels','Joe');
+VALUES('joe.skrebels', '$2y$13$Wtzc2QLUxvNy0SLX3fPwauMYE3x38u7Su5VdSjNC3Ew4uMYDXl1le', 'joe.skrebels@ign.com', 'Skrebels','Joe');
 -- 3
 
 INSERT INTO post_cover
@@ -139,7 +139,7 @@ VALUES(
 
 INSERT INTO user
 (login, password, email, lastname, firstname)
-VALUES('taylor.lyles', '5f4dcc3b5aa765d61d8327deb882cf99', 'taylor.lyles@ign.com', 'Lyles','Taylor');
+VALUES('taylor.lyles', '$2y$13$Wtzc2QLUxvNy0SLX3fPwauMYE3x38u7Su5VdSjNC3Ew4uMYDXl1le', 'taylor.lyles@ign.com', 'Lyles','Taylor');
 -- 4
 
 INSERT INTO post_cover
@@ -174,7 +174,7 @@ VALUES(
 
 INSERT INTO user
 (login, password, email, lastname, firstname)
-VALUES('matt.purslow', '5f4dcc3b5aa765d61d8327deb882cf99', 'matt.purslow@ign.com', 'Purslow','Matt');
+VALUES('matt.purslow', '$2y$13$Wtzc2QLUxvNy0SLX3fPwauMYE3x38u7Su5VdSjNC3Ew4uMYDXl1le', 'matt.purslow@ign.com', 'Purslow','Matt');
 -- 5
 
 INSERT INTO post_cover
@@ -194,7 +194,7 @@ VALUES(
 
 INSERT INTO user
 (login, password, email, lastname, firstname)
-VALUES('kat.bailey', '5f4dcc3b5aa765d61d8327deb882cf99', 'kat.bailey@ign.com', 'Bailey','Kat');
+VALUES('kat.bailey', '$2y$13$Wtzc2QLUxvNy0SLX3fPwauMYE3x38u7Su5VdSjNC3Ew4uMYDXl1le', 'kat.bailey@ign.com', 'Bailey','Kat');
 -- 6
 
 INSERT INTO post_cover
