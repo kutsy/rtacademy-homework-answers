@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostsController extends AbstractController
 {
     #[Route('/', name: 'homepage', methods: ['GET', 'HEAD'])]
-    public function index( PostRepository $postRepository ): Response
+    public function index( PostRepository $postRepository): Response
     {
         // Топ запис
         $top_post               = $postRepository->getTopPost();

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PostStatusRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostStatusRepository::class)
@@ -18,12 +19,14 @@ class PostStatus
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, unique=true)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank
      */
     private $title;
 

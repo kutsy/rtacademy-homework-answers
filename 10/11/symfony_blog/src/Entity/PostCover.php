@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PostCoverRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostCoverRepository::class)
@@ -19,11 +20,13 @@ class PostCover
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank
      */
     private $filename;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank
      */
     private $alt;
 

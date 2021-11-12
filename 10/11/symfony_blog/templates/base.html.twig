@@ -19,6 +19,16 @@
     </nav>
 </header>
 
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert">
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}
+
 {% block body %}{% endblock %}
 
 <footer>
@@ -46,6 +56,7 @@
 
             <ul>
                 {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path('admin_category_create') }}">Add Category</a></li>
                     <li><a href="{{ path('logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{ path('login') }}">Login</a></li>
