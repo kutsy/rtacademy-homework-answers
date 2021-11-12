@@ -18,18 +18,22 @@ class AdminCategoryController extends AbstractController
         $category       = new PostCategory();
         $category_form  = $this->createForm( PostCategoryFormType::class, $category );
 
+        // оброблюємо отримані дані
         $category_form->handleRequest( $request );
 
         if( $category_form->isSubmitted() && $category_form->isValid() )
         {
+            // зберігаємо до БД
             $entityManager->persist( $category );
             $entityManager->flush();
 
+            // додаємо нотифікацію (флеш-повідомлення), що відобразиться на будь-якій наступній сторінці блогу, що відкриє користувач
             $this->addFlash(
                 'notice',
                 'Category "' . $category->getTitle() . '" has added successfully.'
             );
 
+            // перехід до домашньої сторінки
             return $this->redirectToRoute( 'homepage' );
         }
 
