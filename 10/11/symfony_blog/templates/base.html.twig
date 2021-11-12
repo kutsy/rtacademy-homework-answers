@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}" media="all">
+    <title>{% block title %}{% endblock %}Gaming News</title>
+</head>
+<body>
+
+<header>
+    <a href="{{ path('homepage') }}" class="logo"><h1>Gaming News</h1></a>
+    <nav>
+        <ul>
+            {% for item in websiteMenu %}
+                <li><a href="{{ item.href }}" title="{{ item.title|e }}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>
+
+{% block body %}{% endblock %}
+
+<footer>
+
+    <div class="inner">
+
+        <div class="main">
+            <h3><a href="{{ path('homepage') }}">Gaming News</a></h3>
+
+            <ul class="social">
+                <li><a href="#"><img src="{{ asset('images/icons/001-facebook.svg') }}" alt="facebook"></a></li>
+                <li><a href="#"><img src="{{ asset('images/icons/013-twitter.svg') }}" alt="twitter"></a></li>
+                <li><a href="#"><img src="{{ asset('images/icons/008-youtube.svg') }}" alt="youtube"></a></li>
+            </ul>
+
+            <p>&copy; Copyright, {{ "now"|date("Y") }}</p>
+        </div>
+
+        <div class="nav">
+            <h3>Author's Area</h3>
+
+            {% if is_granted('ROLE_USER') %}
+                Hello, {{ app.user.firstName ~ ' ' ~ app.user.lastName }}
+            {% endif %}
+
+            <ul>
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ path('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="nav">
+            <h3>Main Navigation</h3>
+
+            <ul>
+                <li><a href="{{ path('homepage') }}" title="Home">Home</a></li>
+                {% for item in websiteMenu %}
+                    <li><a href="{{ item.href }}" title="{{ item.title|e }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</footer>
+
+</body>
+</html>
